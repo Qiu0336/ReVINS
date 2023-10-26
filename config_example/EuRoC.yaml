@@ -1,0 +1,52 @@
+%YAML:1.0
+
+#data file
+
+ImagePath: "/home/qjy/Dataset/EuRoC/MH_01_easy/mav0/cam0/data"
+TimestampPath: "/home/qjy/Dataset/EuRoC/MH_01_easy/mav0/cam0/data.csv"
+ImuPath: "/home/qjy/Dataset/EuRoC/MH_01_easy/mav0/imu0/data.csv"
+
+#camera calibration 
+model_type: PINHOLE
+resolution: [752, 480] # width, height
+apply_mask: 0
+
+intrinsics: [458.654, 457.296, 367.215, 248.375] #fx, fy, cx, cy
+
+distortion_coefficients: [-0.28340811, 0.07395907, 0.00019359, 1.76187114e-05] # k1,k2,p1,p2
+
+extrinsics: [0.0148655429818, -0.999880929698, 0.00414029679422, -0.0216401454975,
+             0.999557249008, 0.0149672133247, 0.025715529948, -0.064676986768,
+             -0.0257744366974, 0.00375618835797, 0.999660727178, 0.00981073058949,
+             0.0, 0.0, 0.0, 1.0] # Tbc
+
+gyro_noise_density: 0.004     #( gyro "white noise" )
+acce_noise_density: 0.08      #( accel "white noise" )
+gyro_random_walk: 2.0e-6     #( gyro bias diffusion )
+acce_random_walk: 4.0e-5     #( accel bias diffusion )
+
+imu_rate: 200
+
+imu_aided_track: 1    # gyro_aided_tracking point fratures, if 0, using traditional KLT
+image_clahe: 1               # apply image clahe
+max_feature_num: 200            # max feature number in feature tracking
+fundamental_ransac_threshold: 1.0        # ransac threshold (pixel)
+consider_illumination : 1
+consider_affine : 1
+
+pyramid_levels: 4
+half_patch_size: 10        # HalfPatchSize, used in gyro-aided patch
+
+pub_frequent: 10
+keyframe_ave_parallax: 10
+keyframe_tracked_num: 50
+triangulate_parallax: 10
+sliding_window_size: 10         # sliding window size
+initial_window_size: 20
+feature_nosie_in_pixel: 0.5
+loop_closure_enable: 1               # weather loop_closure or not
+
+integration_mode: 1     # integration mode, 1=SE23, 2=SO3, 3=SE3, 4=Quaternion
+
+
+

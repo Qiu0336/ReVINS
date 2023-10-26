@@ -1,0 +1,52 @@
+%YAML:1.0
+
+#data file
+
+ImagePath: "/media/qjy/QJY/Dataset/TUM_VIO/dataset-corridor1_512_16/mav0/cam0/data"
+TimestampPath: "/media/qjy/QJY/Dataset/TUM_VIO/dataset-corridor1_512_16/mav0/cam0/data.csv"
+ImuPath: "/media/qjy/QJY/Dataset/TUM_VIO/dataset-corridor1_512_16/mav0/imu0/data.csv"
+
+#camera calibration
+model_type: KANNALA_BRANDT
+resolution: [512, 512] # width, height
+apply_mask: 1
+
+intrinsics: [190.97847715128717, 190.9733070521226, 254.93170605935475, 256.8974428996504] #fx, fy, cx, cy
+
+distortion_coefficients: [0.0034823894022493434, 0.0007150348452162257, -0.0020532361418706202, 0.00020293673591811182] # k2,k3,k4,k5
+
+extrinsics: [-0.9995250378696743, 0.0075019185074052044, -0.02989013031643309, 0.04557483564969803,
+             0.029615343885863205, -0.03439736061393144, -0.998969345370175, -0.07116180183799704,
+             -0.008522328211654736, -0.9993800792498829, 0.03415885127385616, -0.04468125411714437,
+             0.0, 0.0, 0.0, 1.0] # Tbc
+
+# inertial sensor noise model parameters (static)
+gyro_noise_density: 0.004     #( gyro "white noise" )
+acce_noise_density: 0.08      #( accel "white noise" )
+gyro_random_walk: 2.0e-6     #( gyro bias diffusion )
+acce_random_walk: 4.0e-5     #( accel bias diffusion )
+
+imu_rate: 200
+
+imu_aided_track: 1    # gyro_aided_tracking point fratures, if 0, using traditional KLT
+image_clahe: 1               # apply image clahe
+max_feature_num: 150            # max feature number in feature tracking
+fundamental_ransac_threshold: 1.0        # ransac threshold (pixel)
+consider_illumination : 1
+consider_affine : 1
+
+pyramid_levels: 3
+half_patch_size: 10        # HalfPatchSize, used in gyro-aided patch
+
+pub_frequent: 10
+keyframe_ave_parallax: 10
+keyframe_tracked_num: 50
+triangulate_parallax: 10
+sliding_window_size: 10         # sliding window size
+initial_window_size: 20
+feature_nosie_in_pixel: 0.5
+loop_closure_enable: 0               # weather loop_closure or not
+
+integration_mode: 1     # integration mode, 1=SE23, 2=SO3, 3=SE3, 4=Quaternion
+
+
