@@ -9,7 +9,6 @@ ImuPath: "/media/qjy/QJY/Dataset/TUM_VIO/dataset-corridor1_512_16/mav0/imu0/data
 #camera calibration
 model_type: KANNALA_BRANDT
 resolution: [512, 512] # width, height
-apply_mask: 1
 
 intrinsics: [190.97847715128717, 190.9733070521226, 254.93170605935475, 256.8974428996504] #fx, fy, cx, cy
 

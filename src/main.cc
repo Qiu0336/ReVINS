@@ -85,7 +85,16 @@ int main()
         {
             first_image = false;
             std::shared_ptr<ImuIntegration> cur_imu = std::make_shared<ImuIntegration>(integration_mode);
-            cv::Mat cur_image = image_processor->GetImage(image_id, true);
+            cv::Mat cur_image = image_processor->GetImage(image_id);
+
+            cv::imshow("image", cur_image);
+            cv::waitKey(1);
+
+            if(image_clahe)
+            {
+                cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
+                clahe->apply(cur_image, cur_image);
+            }
 
             std::map<int, Eigen::Isometry3d> pose_list;
             std::map<int, Eigen::Vector3f> mappoint_list;
@@ -105,7 +114,16 @@ int main()
                 break;
             }
 
-            cv::Mat cur_image = image_processor->GetImage(image_id, true);
+            cv::Mat cur_image = image_processor->GetImage(image_id);
+
+            cv::imshow("image", cur_image);
+            cv::waitKey(1);
+
+            if(image_clahe)
+            {
+                cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
+                clahe->apply(cur_image, cur_image);
+            }
 
             std::map<int, Eigen::Isometry3d> pose_list;
             std::map<int, Eigen::Vector3f> mappoint_list;

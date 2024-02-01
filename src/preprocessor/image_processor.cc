@@ -752,12 +752,6 @@ ImageProcessor::ImageProcessor(const std::string &yaml_path)
     image_data_size = image_file_names.size();
     std::cout << " read " << image_data_size << " images !!!" << std::endl;
 
-//    int apply_mask = fSettings["apply_mask"];
-//    if(apply_mask)
-//        mask_template = cv::imread(std::string(DATA_DIR) + "mask.jpg", 0);
-//    else
-//        mask_template = cv::Mat(height, width, CV_8UC1, cv::Scalar(255));
-
     cur_img_pyr.resize(pyramid_levels);
     cur_img_dx_pyr.resize(pyramid_levels);
     cur_img_dy_pyr.resize(pyramid_levels);
@@ -766,17 +760,11 @@ ImageProcessor::ImageProcessor(const std::string &yaml_path)
     global_feature_id = 0;
 }
 
-cv::Mat ImageProcessor::GetImage(int id, bool use_clahe)
+cv::Mat ImageProcessor::GetImage(int id)
 {
     if(id < 0 || id >= image_data_size)
         std::cerr << "GetImage error !!!" << std::endl;
     cv::Mat imgOrg = cv::imread(image_file_names[id], CV_LOAD_IMAGE_GRAYSCALE);
-
-    if(use_clahe)
-    {
-        cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
-        clahe->apply(imgOrg, imgOrg);
-    }
     return imgOrg;
 }
 

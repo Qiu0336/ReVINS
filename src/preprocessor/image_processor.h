@@ -73,7 +73,7 @@ public:
     };
 
     ImageProcessor(const std::string &yaml_path);
-    cv::Mat GetImage(int id, bool use_clahe = false);
+    cv::Mat GetImage(int id);
     std::map<int, Eigen::Vector2d> GetTrackedFeatures(const int id, const cv::Mat& origin_image, bool& is_keyframe,
                                                       std::map<int, Eigen::Isometry3d>& poses_list, std::map<int, Eigen::Vector3f>& mappoint_list);
     io::timestamp_t GetTimestamp(int id);

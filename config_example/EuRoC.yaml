@@ -9,7 +9,6 @@ ImuPath: "/home/qjy/Dataset/EuRoC/MH_01_easy/mav0/imu0/data.csv"
 #camera calibration 
 model_type: PINHOLE
 resolution: [752, 480] # width, height
-apply_mask: 0
 
 intrinsics: [458.654, 457.296, 367.215, 248.375] #fx, fy, cx, cy
 
